@@ -1,6 +1,19 @@
 package task;
 
 public class Task1 {
+ int[] str=new int[32];
+
+ public int[] isZero(int target){
+  int len=Integer.toBinaryString(target).length();
+  int j=0;
+  for(int i=0;i<len;i++){
+   if((target >> i & 1) == 1){
+    str[j]=i;
+    j++;
+   }
+  }
+  return str;
+ }
  public String test(){
   short cc=5;
   short dd=3;
@@ -35,6 +48,11 @@ public class Task1 {
   int aa=7;
   int bb=aa<<1;
   System.out.println(bb);
+  Task1 task1=new Task1();
+  int[] num=task1.isZero(2);
+  /*for(int num1:num){
+   System.out.println(num1);
+  }*/
 
  }
 }

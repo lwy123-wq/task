@@ -1,5 +1,7 @@
 package task.tcp;
 
+import task.dao.JdbcDao;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,7 +18,9 @@ public class Server {
             int len=in.read(bytes);
             System.out.println(new String(bytes,0,len));
             OutputStream out=socket.getOutputStream();
-            out.write("接收到了".getBytes("utf-8"));
+            JdbcDao jdbcDao=new JdbcDao();
+            String str=jdbcDao.myJdbc();
+            out.write(("接收到了"+str).getBytes("utf-8"));
         } catch (IOException e) {
             e.printStackTrace();
         }

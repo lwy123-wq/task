@@ -11,7 +11,8 @@ public class JdbcDao {
     Connection conn = null;
     Statement statement = null;
     ResultSet result = null;
-    public void myJdbc(){
+    public String myJdbc(){
+        String str=null;
         try {
             conn= MySql.getConnection();
             statement=conn.createStatement();
@@ -22,12 +23,15 @@ public class JdbcDao {
             String sql1="select username from user";
             result=statement.executeQuery(sql1);
             if (result.next()){
-                System.out.println(result.getString("username")+"aaaaaa");
+                str=result.getString("username");
             }
+            //System.out.println(str+"aa");
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return str;
     }
 
     public static void main(String[] args) {
